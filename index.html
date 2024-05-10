@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show IP Address</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .center-div {
+            text-align: center;
+        }
+
+        h2 {
+            color: red;
+            margin: 5px 0;
+            /* Reduces the default margin for a tighter layout */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-div">
+        <h2>SAMY: I WILL SEND THE HOMEWORK TO YOUR IP ADDRESS:</h2>
+        <h2 id="ipDisplay">LOADING...</h2>
+    </div>
+
+    <script>
+        function getIPFromAmazon() {
+            fetch("https://checkip.amazonaws.com/")
+                .then(res => res.text())
+                .then(data => {
+                    document.getElementById('ipDisplay').textContent = data.trim();
+                })
+                .catch(err => {
+                    console.error('Failed to fetch IP:', err);
+                    document.getElementById('ipDisplay').textContent = 'Failed to load IP';
+                });
+        }
+        getIPFromAmazon();
+    </script>
+</body>
+
+</html>
